@@ -4,11 +4,13 @@ import LoginHeader from './LoginHeader'
 import analytics from '../utils/firebase';
 import { validate2Input,validateForm } from '../utils/validate';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
     const [isSignIn, setIsSignIn] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
+    const navigate = useNavigate();
 
     const toggleSignInForm = () => {
         setIsSignIn(!isSignIn)
@@ -29,7 +31,8 @@ const Login = () => {
                 // Signed in 
                 const user = userCredential.user;
                 // ...
-                console.log(user)
+                // console.log(user)
+                navigate("/browse")
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -48,6 +51,7 @@ const Login = () => {
                 const user = userCredential.user;
                 // ...
                 console.log(user)
+                navigate("/");
             })
             .catch((error) => {
                 const errorCode = error.code;
