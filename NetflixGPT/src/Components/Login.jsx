@@ -1,7 +1,10 @@
 import { useRef, useState } from 'react'
 import React from 'react'
 import LoginHeader from './LoginHeader'
-import { validate2Input,validateForm } from '../utils/validate'
+import analytics from '../utils/firebase';
+import { validate2Input,validateForm } from '../utils/validate';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
 
 const Login = () => {
     const [isSignIn, setIsSignIn] = useState(true);
@@ -16,13 +19,44 @@ const Login = () => {
 
     const handleLoginButton = () => {
         //validate form inputs
-        if (isSignIn) {
+        if (isSignIn) { //Sign in
             const message = validate2Input(email.current.value, password.current.value)
         setErrorMessage(message);
-        } else {
+ 
+                    const auth = getAuth();
+            signInWithEmailAndPassword(auth,email.current.value, password.current.value)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                // ...
+                console.log(user)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrorMessage(errorCode + " " + errorMessage)
+            });
+
+        } else { //Sign up
             const message = validateForm(nameValidates.current.value, email.current.value, password.current.value)
         setErrorMessage(message);
+            
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user;
+                // ...
+                console.log(user)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                setErrorMessage(errorCode + " " + errorMessage)
+            });
         }
+
     }
 
   return (
