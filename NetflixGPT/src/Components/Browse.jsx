@@ -1,8 +1,11 @@
 import React from 'react'
+import LoginHeader from './LoginHeader'
 
 const Browse = () => {
   return (
-    <div>Browse</div>
+    <div>
+      <LoginHeader/>
+    </div>
   )
 }
 

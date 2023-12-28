@@ -3,14 +3,17 @@ import React from 'react'
 import LoginHeader from './LoginHeader'
 import analytics from '../utils/firebase';
 import { validate2Input,validateForm } from '../utils/validate';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
 
 
 const Login = () => {
     const [isSignIn, setIsSignIn] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
     const navigate = useNavigate();
+    const dispatch = useDispatch()
 
     const toggleSignInForm = () => {
         setIsSignIn(!isSignIn)
@@ -50,8 +53,23 @@ const Login = () => {
                 // Signed up 
                 const user = userCredential.user;
                 // ...
-                console.log(user)
-                navigate("/");
+                //console.log(user)
+
+                const auth = getAuth();
+                updateProfile(auth.currentUser, {
+                displayName: nameValidates.current.value
+                }).then(() => {
+                const {uid, email, displayName} = user;
+                dispatch(
+                    addUser(
+                        { uid: uid, email:email, displayName:displayName }));
+                navigate("/browse");
+                // ...
+                }).catch((error) => {
+                // An error occurred
+                setErrorMessage(error.message)
+                // ...
+                });
             })
             .catch((error) => {
                 const errorCode = error.code;
