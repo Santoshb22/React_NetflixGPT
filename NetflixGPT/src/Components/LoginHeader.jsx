@@ -1,13 +1,31 @@
-import { getAuth, signOut } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import React from 'react'
-import {useSelector} from "react-redux";
+import { useEffect } from 'react'
+import {useDispatch, useSelector} from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import netflixlogo from "../assets/netflixlogo.png"
 import { CiUser } from "react-icons/ci";
+import { addUser, removeUser } from '../utils/userSlice';
  
 const LoginHeader = () => {
 const user = useSelector(store => store.user)
 const navigate = useNavigate();
+const dispatch = useDispatch();
+
+useEffect (() => {
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const {uid, email, displayName} = user;
+      dispatch(addUser({ uid: uid, email:email, displayName:displayName }));
+      // ...
+      navigate("/browse")
+    } else {
+      dispatch(removeUser())
+      navigate("/")
+    }
+  });
+},[])
 
 const handleSignOut = () => {
   const auth = getAuth();
