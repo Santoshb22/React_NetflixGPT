@@ -47,9 +47,7 @@ const Login = () => {
             .then((userCredential) => {
                 // Signed up 
                 const user = userCredential.user;
-                // ...
-                //console.log(user)
-
+             
                 const auth = getAuth();
                 updateProfile(auth.currentUser, {
                 displayName: nameValidates.current.value
@@ -87,13 +85,13 @@ const Login = () => {
                 <div className="signin ">
 
                     {
-                        !isSignIn && (<input ref={nameValidates} className=' block bg-[#333333] w-5/6 my-5 py-3 px-4 rounded-sm '
+                        !isSignIn && (<input ref={nameValidates} id='userName' className=' block bg-[#333333] w-5/6 my-5 py-3 px-4 rounded-sm '
                         type="text" placeholder='Full Name' />)
                     }
 
-                    <input ref={email} className=' bg-[#333333] block w-5/6 my-5 py-3 px-4 rounded-sm '
+                    <input ref={email} id='email' className=' bg-[#333333] block w-5/6 my-5 py-3 px-4 rounded-sm '
                     type="text" placeholder='Email/Mobile Number' />
-                    <input ref={password} className=' bg-[#333333] block w-5/6 my-5 py-3 px-4 rounded-sm'
+                    <input ref={password} id='password' className=' bg-[#333333] block w-5/6 my-5 py-3 px-4 rounded-sm'
                     type='password' placeholder='Password' />
 
                      
