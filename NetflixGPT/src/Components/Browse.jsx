@@ -8,7 +8,7 @@ const Browse = () => {
  usePlayingMovie();
 
   return (
-    <div>
+    <div className='relative ' >
       <LoginHeader/>
       <MainMovieContainer/>
     </div>

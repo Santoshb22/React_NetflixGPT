@@ -38,7 +38,7 @@ signOut(auth).then(() => {
 }
 
   return (
-    <div className='absolute  flex justify-between w-[100%] px-3 py-5 bg-gradient-to-t from-transparent to-black bg-opacity-25 '>
+    <div className='absolute z-10 flex justify-between w-[100%] px-3 py-5 bg-gradient-to-t from-transparent to-black bg-opacity-25 '>
         <img className=' w-36 rounded-md ' src={netflixlogo} alt="Logo" />
 
       <div>
