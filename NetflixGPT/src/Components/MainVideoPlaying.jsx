@@ -8,7 +8,7 @@ const trailerVideo  = useSelector(store => store.movie.trailerVideos?.key  )
 useFetchMainVideo(movieId);
 
   return (
-    <div >
+    <div className='  '>
       <iframe className='w-screen  aspect-video  '
         src={`https://www.youtube.com/embed/${trailerVideo}?autoplay=1&controls=0&showinfo=0&autohide=1 `}
         title="YouTube video player"
