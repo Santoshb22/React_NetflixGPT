@@ -6,9 +6,11 @@ import SecondaryContainer from './SecondaryContainer';
 import usePopularMovie from '../Hooks/useFetchPopularMovies';
 import useFetchTopRaterMovies from '../Hooks/useFetchTopRatedMovies';
 import useUpcomingMovies from '../Hooks/useUpcomingMovies';
+import GptSearch from './GptSearch';
+import { useSelector } from 'react-redux';
 
 const Browse = () => {
-
+  const gptSearch = useSelector(store => store.bool.btnValue )
  usePlayingMovie();
  usePopularMovie()
  useFetchTopRaterMovies();
@@ -17,8 +19,13 @@ const Browse = () => {
   return (
     <div className='relative ' >
       <LoginHeader/>
-      <MainMovieContainer/>
-      <SecondaryContainer/>
+      {
+        gptSearch ? <>
+        <MainMovieContainer/>
+          <SecondaryContainer/>
+        </> :
+          <GptSearch/> 
+      }
     </div>
   )
 }

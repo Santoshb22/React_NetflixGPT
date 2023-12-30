@@ -5,7 +5,9 @@ import {useDispatch, useSelector} from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import netflixlogo from "../assets/netflixlogo.png"
 import { CiUser } from "react-icons/ci";
+import { IoSearchOutline } from "react-icons/io5";
 import { addUser, removeUser } from '../utils/userSlice';
+import { toggleGptSearch } from '../utils/boolSlice';
  
 const LoginHeader = () => {
 const user = useSelector(store => store.user)
@@ -37,9 +39,26 @@ signOut(auth).then(() => {
 });
 }
 
+const value = useSelector(store => store.bool.btnValue)
+ let homeBtnText = value ? "Gpt-Search" : "Home";
+
+const handleGptSearch = () => {
+  dispatch(toggleGptSearch())
+}
   return (
     <div className='absolute z-10 flex justify-between w-[100%] px-3 py-5 bg-gradient-to-t from-transparent to-black bg-opacity-25 '>
-        <img className=' w-36 rounded-md ' src={netflixlogo} alt="Logo" />
+      <div className='flex items-center gap-20'>
+        <img className=' w-32 rounded-md ' src={netflixlogo} alt="Logo" />
+          <div className='flex items-center gap-1'>
+          
+          <button onClick={handleGptSearch}
+          className='font-bold text-white'
+          >{homeBtnText}</button>
+            {
+              value && <IoSearchOutline className='text-white font-bold text-xl '/> 
+            }
+          </div>
+        </div>
 
       <div>
        { user && <div className='flex align items-center gap-4 '>
@@ -47,6 +66,7 @@ signOut(auth).then(() => {
             <CiUser size={28} className='text-white'/>
               {user.displayName}
           </p>
+
           <button onClick={handleSignOut} className='text-white bg-red-700 py-2 px-4 rounded-md  font-bold'>Sign out</button>
         </div>}
       </div>  

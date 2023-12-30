@@ -6,6 +6,7 @@ import { validate2Input,validateForm } from '../utils/validate';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { BG_IMG } from '../utils/constant';
 
 
 const Login = () => {
@@ -76,7 +77,7 @@ const Login = () => {
   return (
     <div>
         <LoginHeader/>
-        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/563192ea-ac0e-4906-a865-ba9899ffafad/6b2842d1-2339-4f08-84f6-148e9fcbe01b/IN-en-20231218-popsignuptwoweeks-perspective_alpha_website_small.jpg" alt="Login page background Image" />
+        <img src={BG_IMG} alt="Login page background Image" />
 
         <form onSubmit={(e) => e.preventDefault()} className=" text-white py-12 absolute left-1/3 top-36 login-container bg-black bg-opacity-85  w-[500px] rounded-md">
             <div className="form-cont w-4/5 my-5 mx-20 ">
