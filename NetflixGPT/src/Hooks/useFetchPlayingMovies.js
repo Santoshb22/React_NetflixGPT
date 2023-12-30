@@ -21,5 +21,4 @@ const usePlayingMovie = () => {
 
 }
 
-
 export default usePlayingMovie;
