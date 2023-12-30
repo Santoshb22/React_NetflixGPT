@@ -8,6 +8,8 @@ import { CiUser } from "react-icons/ci";
 import { IoSearchOutline } from "react-icons/io5";
 import { addUser, removeUser } from '../utils/userSlice';
 import { toggleGptSearch } from '../utils/boolSlice';
+import { lang } from '../utils/constant';
+import { changeLang } from '../utils/langSlice';
  
 const LoginHeader = () => {
 const user = useSelector(store => store.user)
@@ -45,9 +47,14 @@ const value = useSelector(store => store.bool.btnValue)
 const handleGptSearch = () => {
   dispatch(toggleGptSearch())
 }
+
+const handleOnChange = (e) => {
+  dispatch(changeLang(e.target.value));
+}
+ 
   return (
     <div className='absolute z-10 flex justify-between w-[100%] px-3 py-5 bg-gradient-to-t from-transparent to-black bg-opacity-25 '>
-      <div className='flex items-center gap-20'>
+      <div className='flex items-center gap-14'>
         <img className=' w-32 rounded-md ' src={netflixlogo} alt="Logo" />
           <div className='flex items-center gap-1'>
           
@@ -55,10 +62,21 @@ const handleGptSearch = () => {
           className='font-bold text-white'
           >{homeBtnText}</button>
             {
-              value && <IoSearchOutline className='text-white font-bold text-xl '/> 
+              value &&  <IoSearchOutline className='text-white font-bold text-xl '/> 
             }
           </div>
+
+          { !value &&
+          <div>
+            <select className='py-0.5 rounded-sm' onChange={handleOnChange} >
+              {
+                lang.map(lang => <option key={lang.value} value={lang.value}>{lang.langName}</option>)
+              }
+            </select>
+          </div>
+          }
         </div>
+            
 
       <div>
        { user && <div className='flex align items-center gap-4 '>
