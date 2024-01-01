@@ -22,9 +22,3 @@ const SecondaryContainer = () => {
 
 export default SecondaryContainer
 
-// {
-//     mainContainer
-//      - MovieList 
-//       -cards 
-//       -title
-//   }

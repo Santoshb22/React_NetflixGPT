@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 
 const Browse = () => {
   const gptSearch = useSelector(store => store.bool.btnValue )
+
  usePlayingMovie();
  usePopularMovie()
  useFetchTopRaterMovies();

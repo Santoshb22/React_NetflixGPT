@@ -17,6 +17,7 @@ const Login = () => {
     const toggleSignInForm = () => {
         setIsSignIn(!isSignIn)
     }
+    
     const nameValidates = useRef(null);
     const email = useRef(null);
     const password = useRef(null);

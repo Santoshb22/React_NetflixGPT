@@ -7,7 +7,7 @@ import netflixlogo from "../assets/netflixlogo.png"
 import { CiUser } from "react-icons/ci";
 import { IoSearchOutline } from "react-icons/io5";
 import { addUser, removeUser } from '../utils/userSlice';
-import { toggleGptSearch } from '../utils/boolSlice';
+import {toggleGptSearch } from '../utils/boolSlice';
 import { lang } from '../utils/constant';
 import { changeLang } from '../utils/langSlice';
  
@@ -39,7 +39,10 @@ signOut(auth).then(() => {
   // An error happened.
   navigate('/error')
 });
+
 }
+
+const showSearchBtn = useSelector(store => store.bool.toggleSign)
 
 const value = useSelector(store => store.bool.btnValue)
  let homeBtnText = value ? "Gpt-Search" : "Home";
@@ -56,7 +59,9 @@ const handleOnChange = (e) => {
     <div className='absolute z-10 flex justify-between w-[100%] px-3 py-5 bg-gradient-to-t from-transparent to-black bg-opacity-25 '>
       <div className='flex items-center gap-14'>
         <img className=' w-32 rounded-md ' src={netflixlogo} alt="Logo" />
-          <div className='flex items-center gap-1'>
+      
+     
+        <div className='flex items-center gap-1'>
           
           <button onClick={handleGptSearch}
           className='font-bold text-white'
@@ -65,6 +70,7 @@ const handleOnChange = (e) => {
               value &&  <IoSearchOutline className='text-white font-bold text-xl '/> 
             }
           </div>
+      
 
           { !value &&
           <div>
@@ -75,6 +81,7 @@ const handleOnChange = (e) => {
             </select>
           </div>
           }
+
         </div>
             
 
