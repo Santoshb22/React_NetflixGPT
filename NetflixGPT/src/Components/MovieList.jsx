@@ -1,5 +1,6 @@
 import React from 'react'
 import Cards from './Cards'
+import CardShimmerUi from './CardShimmerUi'
 
 const MovieList = ( { movies, title } ) => {
   return (
@@ -8,7 +9,7 @@ const MovieList = ( { movies, title } ) => {
         <div className='flex overflow-x-auto'>
             <div className='flex gap-6 '>
                 {
-                    movies?.map(movie =>  <Cards key={movie.id} imgPath = {movie.poster_path} />)
+                    movies?.map(movie => !movie ? (<CardShimmerUi/>) : (<Cards key={movie.id} imgPath = {movie.poster_path} movieTitle = {movie.title} />))
                 }
             </div>
         </div>

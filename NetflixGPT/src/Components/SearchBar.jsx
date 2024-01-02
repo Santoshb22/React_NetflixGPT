@@ -35,7 +35,6 @@ const arrayMovies = movies.split(",");
 const promiseArr = arrayMovies.map((arrayMovies) => getSearchMovies(arrayMovies.trim()));
 const finalMovieResult = await Promise.all(promiseArr);
 
-// console.log("from search bar:",finalMovieResult )
 dispatch(addSearchedApiMovies(finalMovieResult))
 dispatch(addSearchedGptMovies(arrayMovies))
 }

@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 const MainVideoPlaying = ({movieId}) => {
 const trailerVideo  = useSelector(store => store.movie.trailerVideos?.key  )
-console.log(trailerVideo)
 
 useFetchMainVideo(movieId);
 
