@@ -28,4 +28,4 @@ export const lang = [
     }
 ]
 
-export const SEARCH_GPT_KEY = "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";
+export const SEARCH_GPT_KEY = "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";
