@@ -56,43 +56,44 @@ const handleOnChange = (e) => {
 }
  
   return (
-    <div className='absolute z-10 flex justify-between w-[100%] px-3 py-5 bg-gradient-to-t from-transparent to-black bg-opacity-25 '>
-      <div className='flex items-center gap-14'>
-        <img className=' w-32 rounded-md ' src={netflixlogo} alt="Logo" />
+    <div className='absolute z-10 flex items-center justify-between w-[100%] px-3 py-2 sm:py-5 bg-gradient-to-t from-transparent to-black bg-opacity-25 '>
+      <div className='flex items-center gap-4 sm:gap-14'>
+        <img className=' w-16 sm:w-32 md:w-36 rounded-md ' src={netflixlogo} alt="Logo" />
       
-     
+     { user && <div className='flex gap-4'>
         <div className='flex items-center gap-1'>
           
           <button onClick={handleGptSearch}
-          className='font-bold text-white'
+          className='font-bold text-white text-[10px] sm:text-lg md:text-lg '
           >{homeBtnText}</button>
             {
-              value &&  <IoSearchOutline className='text-white font-bold text-xl '/> 
+              value &&  <IoSearchOutline className='text-white font-bold text-sm md:text-2xl sm:text-2xl '/> 
             }
           </div>
       
 
           { !value &&
           <div>
-            <select className='py-0.5 rounded-sm' onChange={handleOnChange} >
+            <select className='py-0.5 text-xs sm:text-md rounded-sm' onChange={handleOnChange} >
               {
                 lang.map(lang => <option key={lang.value} value={lang.value}>{lang.langName}</option>)
               }
             </select>
           </div>
           }
-
+          </div>
+       }
         </div>
             
 
-      <div>
+      <div className='mt-1.5'>
        { user && <div className='flex align items-center gap-4 '>
-          <p className='font-bold text-white flex items-center'>
-            <CiUser size={28} className='text-white'/>
+          <p className='font-bold text-white flex items-center text-[10px] sm:text-lg md:text-lg '>
+            <CiUser size={18}  className='text-white md:size-7'/>
               {user.displayName}
           </p>
 
-          <button onClick={handleSignOut} className='text-white bg-red-700 py-2 px-4 rounded-md  font-bold'>Sign out</button>
+          <button onClick={handleSignOut} className='text-white bg-red-700 text-[10px] sm:text-lg md:text-lg font-semibold py-0.5  md:py-2 px-2 md:px-4 rounded-md '>Sign out</button>
         </div>}
       </div>  
       

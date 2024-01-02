@@ -4,7 +4,7 @@ import Cards from './Cards'
 const MovieList = ( { movies, title } ) => {
   return (
     <div  >
-        <h3 className='text-3xl font-bold mx-3 mt-5 mb-2 text-white' >{title}</h3>
+        <h3 className=' text-sm sm:text-3xl md:text-2xl font-semibold  mx-2 sm:mx-3 mt-5 mb-2 text-white' >{title}</h3>
         <div className='flex overflow-x-auto'>
             <div className='flex gap-6 '>
                 {

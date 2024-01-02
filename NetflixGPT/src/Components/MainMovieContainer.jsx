@@ -12,6 +12,7 @@ const MainMovieContainer = () => {
       }
       
     const movieData = movies[num]
+    console.log(movieData);
     
     const {id, original_title, overview} = movieData;
 

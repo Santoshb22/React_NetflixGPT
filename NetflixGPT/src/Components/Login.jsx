@@ -78,9 +78,12 @@ const Login = () => {
   return (
     <div>
         <LoginHeader/>
-        <img src={BG_IMG} alt="Login page background Image" />
+        <div className='h-screen' >
+        <img className='object-cover w-full h-full' src={BG_IMG} alt="Login page background Image" />
 
-        <form onSubmit={(e) => e.preventDefault()} className=" text-white py-12 absolute left-1/3 top-36 login-container bg-black bg-opacity-85  w-[500px] rounded-md">
+        </div>  
+    <div className='inset-0 flex items-center justify-center'>
+        <form onSubmit={(e) => e.preventDefault()} className=" text-white py-12 absolute top-36 login-container bg-black bg-opacity-85 w-[500px] rounded-md">
             <div className="form-cont w-4/5 my-5 mx-20 ">
                 <h3 className='text-2xl '> { isSignIn ? "Sign In" : "Sign up" } </h3>
 
@@ -119,6 +122,7 @@ const Login = () => {
                 </div>
             </div>
         </form>
+    </div>        
     </div>
   )
 }

@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "netflixgpt-sb"
-  }
+    "default": "netflixgpt-sb",
+    "completed": "netflixgpt-sb"
+  },
+  "targets": {},
+  "etags": {}
 }

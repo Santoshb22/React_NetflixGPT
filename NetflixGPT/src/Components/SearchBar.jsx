@@ -45,12 +45,12 @@ dispatch(addSearchedGptMovies(arrayMovies))
       <form onSubmit={(e) => e.preventDefault()}>
         <input 
         ref={searchText}
-        className='py-3 px-2 rounded-l w-80 '
+        className=' py-2 md:py-3 px-2 rounded-l text-sm md:text-md w-52 md:w-80 '
         type="text"
         placeholder= {lang[langVal].placeHolder} />
         <button 
         onClick={handleSearchGPT}
-        className='px-3 py-3 font-bold text-white rounded-r bg-red-600 '>
+        className='px-3 py-2 md:py-3 font-bold text-white rounded-r text-sm md:text-md md:text-md bg-red-600 '>
           {lang[langVal].search}
         </button>
       </form>
