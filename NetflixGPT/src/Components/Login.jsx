@@ -74,7 +74,6 @@ const Login = () => {
         }
 
     }
-
   return (
     <div>
         <LoginHeader/>
