@@ -78,8 +78,8 @@ const Login = () => {
   return (
     <div>
         <LoginHeader/>
-        <div className='h-screen' >
-        <img className='object-cover w-full h-full' src={BG_IMG} alt="Login page background Image" />
+        <div className='h-full w-full' >
+        <img className=' w-full h-full object-cover' src={BG_IMG} alt="Login page background Image" />
 
         </div>  
     <div className='inset-0 flex items-center justify-center'>

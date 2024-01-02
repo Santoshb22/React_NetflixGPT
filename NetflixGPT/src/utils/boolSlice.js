@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const boolSlice = createSlice({
     name: "bool",
     initialState: {
-        btnValue: false,
+        btnValue: true,
     },
     reducers: {
         toggleGptSearch: (state) => {
