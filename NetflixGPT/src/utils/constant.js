@@ -32,4 +32,4 @@ export const lang = [
     }
 ]
 
-export const SEARCH_GPT_KEY = import.meta.env.gptApiKey
+export const SEARCH_GPT_KEY = gptApiKey
